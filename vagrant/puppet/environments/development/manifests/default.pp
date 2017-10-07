@@ -43,3 +43,37 @@ package { "git":
 package { "unzip":
     name => "unzip",
 }
+
+exec { "php : key":
+    creates => "/etc/apt/trusted.gpg.d/php.gpg",
+    command => "wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg",
+}
+
+file { "php : list":
+    path    => "/etc/apt/sources.list.d/php.list",
+    content => "deb https://packages.sury.org/php/ jessie main",
+    require => Exec["php : key"],
+    before  => Exec["apt-get : update"],
+}
+
+package { "php : cli":
+    name    => "php-cli",
+    require => [
+        File["php : list"],
+        Exec["apt-get : update"],
+    ],
+}
+
+exec { "composer : install":
+    creates => "/usr/bin/composer",
+    command => "wget https://getcomposer.org/composer.phar -O /usr/bin/composer && chmod +x /usr/bin/composer",
+}
+
+exec { "composer : upgrade":
+    command     => "composer self-update",
+    environment => ["HOME=/root"],
+    require     => [
+        Package["php : cli"],
+        Exec["composer : install"],
+    ],
+}
