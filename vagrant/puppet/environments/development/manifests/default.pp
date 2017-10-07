@@ -74,16 +74,15 @@ package { "php : mbstring":
     require => Package["php : cli"],
 }
 
-exec { "composer : install":
+exec { "composer":
     creates => "/usr/bin/composer",
     command => "wget https://getcomposer.org/composer.phar -O /usr/bin/composer && chmod +x /usr/bin/composer",
+    require => Package["php : cli"],
 }
 
-exec { "composer : upgrade":
+exec { "composer : self-update":
     command     => "composer self-update",
-    environment => ["HOME=/root"],
-    require     => [
-        Package["php : cli"],
-        Exec["composer : install"],
-    ],
+    user        => "vagrant",
+    environment => ["HOME=/home/vagrant"],
+    require     => Exec["composer"],
 }
