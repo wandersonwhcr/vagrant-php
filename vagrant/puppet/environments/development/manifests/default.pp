@@ -35,3 +35,7 @@ exec { "apt-get : autoremove":
 package { "vim":
     name => "vim",
 }
+
+package { "git":
+    name => "git",
+}
