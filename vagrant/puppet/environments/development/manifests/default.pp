@@ -39,3 +39,7 @@ package { "vim":
 package { "git":
     name => "git",
 }
+
+package { "unzip":
+    name => "unzip",
+}
