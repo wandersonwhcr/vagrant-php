@@ -56,7 +56,7 @@ file { "php : list":
     before  => Exec["apt-get : update"],
 }
 
-package { "php : cli":
+package { "php":
     name    => "php-cli",
     require => [
         File["php : list"],
@@ -64,16 +64,33 @@ package { "php : cli":
     ],
 }
 
-exec { "composer : install":
-    creates => "/usr/bin/composer",
-    command => "wget https://getcomposer.org/composer.phar -O /usr/bin/composer && chmod +x /usr/bin/composer",
+package { "php : xml":
+    name    => "php-xml",
+    require => Package["php"],
 }
 
-exec { "composer : upgrade":
+package { "php : mbstring":
+    name    => "php-mbstring",
+    require => Package["php"],
+}
+
+exec { "composer":
+    creates => "/usr/bin/composer",
+    command => "wget https://getcomposer.org/composer.phar -O /usr/bin/composer && chmod +x /usr/bin/composer",
+    require => Package["php"],
+}
+
+exec { "composer : self-update":
     command     => "composer self-update",
-    environment => ["HOME=/root"],
-    require     => [
-        Package["php : cli"],
-        Exec["composer : install"],
-    ],
+    user        => "vagrant",
+    environment => ["HOME=/home/vagrant"],
+    require     => Exec["composer"],
+}
+
+exec { "composer : install":
+    command     => "composer install",
+    user        => "vagrant",
+    environment => ["HOME=/home/vagrant"],
+    cwd         => "/vagrant",
+    require     => Exec["composer"],
 }
