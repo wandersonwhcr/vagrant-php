@@ -56,7 +56,7 @@ file { "php : list":
     before  => Exec["apt-get : update"],
 }
 
-package { "php : cli":
+package { "php":
     name    => "php-cli",
     require => [
         File["php : list"],
@@ -66,18 +66,18 @@ package { "php : cli":
 
 package { "php : xml":
     name    => "php-xml",
-    require => Package["php : cli"],
+    require => Package["php"],
 }
 
 package { "php : mbstring":
     name    => "php-mbstring",
-    require => Package["php : cli"],
+    require => Package["php"],
 }
 
 exec { "composer":
     creates => "/usr/bin/composer",
     command => "wget https://getcomposer.org/composer.phar -O /usr/bin/composer && chmod +x /usr/bin/composer",
-    require => Package["php : cli"],
+    require => Package["php"],
 }
 
 exec { "composer : self-update":
