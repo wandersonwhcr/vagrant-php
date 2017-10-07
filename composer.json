@@ -1,6 +1,7 @@
 {
     "name": "wandersonwhcr/vagrant-php",
     "description": "Another Vagrant with Debian for PHP Development",
+    "tags": ["vagrant", "debian", "development", "puppet"],
     "type": "project",
     "license": "MIT",
     "require": {},
