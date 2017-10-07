@@ -3,5 +3,8 @@
     "description": "Another Vagrant with Debian for PHP Development",
     "type": "project",
     "license": "MIT",
-    "require": {}
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "~6.4.0"
+    }
 }
