@@ -9,10 +9,10 @@ project: you can easily start a new Composer project with Vagrant support.
 
 ## Installation
 
-The project is available from Packagist and you can install it via Composer.
+The project is available from Github and you can clone it via Git.
 
 ```bash
-composer create-project wandersonwhcr/vagrant-php
+git clone https://github.com/wandersonwhcr/vagrant-php my-awesome-project
 ```
 
 ## License
