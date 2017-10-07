@@ -23,9 +23,6 @@
         }
     },
     "scripts": {
-        "post-create-project-cmd": [
-            "vagrant up"
-        ],
         "test": [
             "phpunit"
         ],
