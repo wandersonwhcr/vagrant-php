@@ -52,7 +52,7 @@ exec { "php : key":
 file { "php : list":
     path    => "/etc/apt/sources.list.d/php.list",
     content => "deb https://packages.sury.org/php/ jessie main",
-    require => Exec["php : key"],
+    require => Package["apt-get : https"],
     before  => Exec["apt-get : update"],
 }
 
