@@ -82,7 +82,7 @@ exec { "composer":
 
 exec { "composer : self-update":
     command     => "composer self-update",
-    environment => ["HOME=/home/vagrant"],
+    environment => ["HOME=/root"],
     require     => Exec["composer"],
 }
 
