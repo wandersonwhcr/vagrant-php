@@ -63,3 +63,17 @@ package { "php : cli":
         Exec["apt-get : update"],
     ],
 }
+
+exec { "composer : install":
+    creates => "/usr/bin/composer",
+    command => "wget https://getcomposer.org/composer.phar -O /usr/bin/composer && chmod +x /usr/bin/composer",
+}
+
+exec { "composer : upgrade":
+    command     => "composer self-update",
+    environment => ["HOME=/root"],
+    require     => [
+        Package["php : cli"],
+        Exec["composer : install"],
+    ],
+}
