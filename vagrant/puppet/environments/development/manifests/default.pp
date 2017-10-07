@@ -69,6 +69,11 @@ package { "php : xml":
     require => Package["php : cli"],
 }
 
+package { "php : mbstring":
+    name    => "php-mbstring",
+    require => Package["php : cli"],
+}
+
 exec { "composer : install":
     creates => "/usr/bin/composer",
     command => "wget https://getcomposer.org/composer.phar -O /usr/bin/composer && chmod +x /usr/bin/composer",
