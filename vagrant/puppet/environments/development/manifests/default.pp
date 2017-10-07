@@ -64,6 +64,11 @@ package { "php : cli":
     ],
 }
 
+package { "php : xml":
+    name    => "php-xml",
+    require => Package["php : cli"],
+}
+
 exec { "composer : install":
     creates => "/usr/bin/composer",
     command => "wget https://getcomposer.org/composer.phar -O /usr/bin/composer && chmod +x /usr/bin/composer",
