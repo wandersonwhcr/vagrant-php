@@ -31,3 +31,7 @@ exec { "apt-get : autoremove":
     command => "apt-get autoremove -q -y",
     require => Exec["apt-get : upgrade"],
 }
+
+package { "vim":
+    name => "vim",
+}
