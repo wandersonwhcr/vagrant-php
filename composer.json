@@ -1,0 +1,7 @@
+{
+    "name": "wandersonwhcr/vagrant-php",
+    "description": "Another Vagrant with Debian for PHP Development",
+    "type": "project",
+    "license": "MIT",
+    "require": {}
+}
