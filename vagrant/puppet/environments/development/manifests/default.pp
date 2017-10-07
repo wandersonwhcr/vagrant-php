@@ -86,3 +86,11 @@ exec { "composer : self-update":
     environment => ["HOME=/home/vagrant"],
     require     => Exec["composer"],
 }
+
+exec { "composer : install":
+    command     => "composer install",
+    user        => "vagrant",
+    environment => ["HOME=/home/vagrant"],
+    cwd         => "/vagrant",
+    require     => Exec["composer"],
+}
