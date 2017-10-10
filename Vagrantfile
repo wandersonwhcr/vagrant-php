@@ -2,6 +2,8 @@ Vagrant.configure("2") do |config|
     config.vm.box      = "debian/contrib-jessie64"
     config.vm.hostname = "php"
 
+    config.vm.post_up_message = "Another Vagrant with Debian for PHP Development"
+
     config.vm.network "forwarded_port", guest: 8000, host: 8000, auto_correct: true
 
     config.vm.provider "virtualbox" do |virtualbox|
