@@ -9,7 +9,7 @@ project: you can easily start a new Composer project with Vagrant support.
 
 ## Installation
 
-The project is available from Github and you can clone it via Git.
+The project is available from GitHub and you can clone it via Git.
 
 ```bash
 git clone https://github.com/wandersonwhcr/vagrant-php my-awesome-project
