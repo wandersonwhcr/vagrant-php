@@ -10,6 +10,8 @@ use PHPUnit\Framework\TestCase;
  */
 class ExampleTest extends TestCase
 {
+    protected $example;
+
     protected function setUp()
     {
         $this->example = new Example();
