@@ -26,7 +26,7 @@ class Example
     /**
      * Set BazQux
      *
-     * @param  string $bazQux BazQux
+     * @param  string|null $bazQux BazQux
      * @return void
      */
     public function setBazQux(?string $bazQux) : void
