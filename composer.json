@@ -31,7 +31,8 @@
             "parallel-lint src",
             "phpcpd src",
             "phpmd src text phpmd.xml.dist",
-            "phpcs"
+            "phpcs",
+            "phpstan analyse src test --no-progress --level max"
         ],
         "serve": [
             "php -S 0.0.0.0:8000 -t public public/index.php"
